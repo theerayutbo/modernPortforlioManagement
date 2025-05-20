@@ -9,7 +9,14 @@ start_date = '2015-01-01'
 end_date = '2023-01-01'
 
 # Fetch historical stock data
-data = yf.download(tickers, start=start_date, end=end_date)['Adj Close']
+
+data = yf.download(
+    tickers,
+    start=start_date,
+    end=end_date
+)
+# data.columns are ['AAPL','MSFT',…], each already adjusted
+
 
 # Calculate historical returns
 returns = data.pct_change().dropna()
